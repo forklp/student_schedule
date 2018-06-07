@@ -38,7 +38,7 @@ url
 form表单提交数据
 
 
-action属性表示数据提交到的url，action='.'表示提交到当前页面，action='/register'表示提交到register页面
+action属性表示数据提交到的url，action='.'表示提交到当前页面，action='/register/'表示提交到register页面
 
 
 from表单使用post方法时，要写{% csrf_token %}验证
