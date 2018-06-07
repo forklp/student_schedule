@@ -20,4 +20,7 @@ from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('crawler/', views.crawler),
+    path('login/', views.login),
+    path('register/', views.register),
+    path('choose/', views.choose)
 ]

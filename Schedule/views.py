@@ -54,3 +54,18 @@ def crawler(request):
                                           )
 
     return render(request, 'crawler.html')
+
+
+def login(request):
+    if request.method == 'POST':
+
+        return render(request, 'login.html')
+    return render(request, 'login.html')
+
+
+def register(request):
+    return render(request, 'register.html')
+
+
+def choose(request):
+    return render(request, 'choose.html')
