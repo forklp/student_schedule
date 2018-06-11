@@ -1,10 +1,410 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link href="/static/assets/css/login.css" rel="stylesheet" media="all">
+    <title>Jzago</title>
+    <link rel="icon" href="images/jzago.png" />
 </head>
+
 <body>
-<h1>这是登录界面，请把登录信息提交至当前页面</h1>
+    <div class="header"></div>
+    <div class="login pos1">
+        {% csrf_token %}
+        <form role="form" action="." method="POST" class="login-form">
+            <div class="form-group">
+                <label class="sr-only" for="account">账户：</label>
+                <input type="text" name="account" placeholder="账户" class="form-username form-control" id="account">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="password">密码：</label>
+                <input type="password" name="password" placeholder="******" class="form-password form-control" id="password">
+            </div>
+            <button type="submit" class="btn">Sign in!</button>
+        </form>
+    </div>
+    <div class="register pos1">
+        {% csrf_token %}
+        <form role="form" action="." method="POST" class="login-form">
+            <div class="form-group">
+                <label class="sr-only" for="account">账户：</label>
+                <input type="text" name="account" placeholder="账户" class="form-username form-control" id="account">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="password">密码：</label>
+                <input type="password" name="password" placeholder="******" class="form-password form-control" id="password">
+            </div>
+            <button type="submit" class="btn">Sign up!</button>
+        </form>
+    </div>
+    <div class="selector pos2">
+        <div class="selector_register selector_active selector_son">注册</div>
+        <div class="selector_line">—</div>
+        <div class="selector_login selector_son">登录</div>
+    </div>
+    <div class="message pos3">
+        <div class="message_header">
+            本次选课计划时间表
+        </div>
+        <table width="595" style="margin:0">
+            <tbody>
+                <tr class="firstRow" style="height: 61px;">
+                    <td width="331" style="padding: 0px 7px; border: 1px solid windowtext; border-image: none; background-color: transparent;"
+                        colspan="3">
+                        <p style="text-align: center; line-height: 150%;">
+                            <strong>
+                                <span style="line-height: 150%; font-family: 宋体;">选课阶段</span>
+                            </strong>
+                        </p>
+                    </td>
+                    <td width="60" style="border-width: 1px 1px 1px 0px; border-style: solid solid solid none; border-color: windowtext windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; border-image: none; background-color: transparent;">
+                        <p style="line-height: 150%;">
+                            <strong>
+                                <span style="line-height: 150%; font-family: 宋体;">非重修课是否允许冲突</span>
+                            </strong>
+                        </p>
+                    </td>
+                    <td width="72" style="border-width: 1px 1px 1px 0px; border-style: solid solid solid none; border-color: windowtext windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; border-image: none; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <strong>
+                                <span style="line-height: 150%; font-family: 宋体;">非重修课是否受课容量限制</span>
+                            </strong>
+                        </p>
+                    </td>
+                    <td width="60" style="border-width: 1px 1px 1px 0px; border-style: solid solid solid none; border-color: windowtext windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; border-image: none; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <strong>
+                                <span style="line-height: 150%; font-family: 宋体;">是否可以退课</span>
+                            </strong>
+                        </p>
+                    </td>
+                    <td width="72" style="border-width: 1px 1px 1px 0px; border-style: solid solid solid none; border-color: windowtext windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; border-image: none; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <strong>
+                                <span style="line-height: 150%; font-family: 宋体;">重修课程（不限冲突、不限容量）</span>
+                            </strong>
+                        </p>
+                    </td>
+                </tr>
+                <tr style="height: 45px;">
+                    <td width="71" style="border-width: 0px 1px 1px; border-style: none solid solid; border-color: rgb(0, 0, 0) windowtext windowtext; padding: 0px 7px; border-image: none; background-color: transparent;"
+                        rowspan="3">
+                        <p style="text-align: center; line-height: 150%;">
+                            <strong>
+                                <span style="line-height: 150%; font-family: 宋体;">预</span>
+                            </strong>
+                            <strong>
+                                <span style="line-height: 150%;">
+                                    <span style="font-family: Times New Roman;">&nbsp; </span>
+                                </span>
+                            </strong>
+                            <strong>
+                                <span style="line-height: 150%; font-family: 宋体;">选</span>
+                            </strong>
+                        </p>
+                    </td>
+                    <td width="56" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">15</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">及以上年级</span>
+                        </p>
+                    </td>
+                    <td width="204" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">15</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">周星期二、三、四</span>
+                        </p>
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">（</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">6</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">月</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">12</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">、</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">13</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">、</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">14</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">日）</span>
+                        </p>
+                    </td>
+                    <td width="60" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;"
+                        rowspan="3">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体;">否</span>
+                        </p>
+                    </td>
+                    <td width="72" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;"
+                        rowspan="3">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体;">否</span>
+                        </p>
+                    </td>
+                    <td width="60" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;"
+                        rowspan="3">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体;">是</span>
+                        </p>
+                    </td>
+                    <td width="72" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;"
+                        rowspan="3">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体;">可选</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr style="height: 21px;">
+                    <td width="56" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">16</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">级</span>
+                        </p>
+                    </td>
+                    <td width="204" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">15</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">星期三、四、五</span>
+                        </p>
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">（</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">6</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">月</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">13</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">、</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">14</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">、</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">15</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">日）</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr style="height: 21px;">
+                    <td width="56" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">17</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">级</span>
+                        </p>
+                    </td>
+                    <td width="204" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">15</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">周星期四、五、六</span>
+                        </p>
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">（</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">6</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">月</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">14</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">、</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">15</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">、</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">16</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">日）</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="71" style="border-width: 0px 1px 1px; border-style: none solid solid; border-color: rgb(0, 0, 0) windowtext windowtext; padding: 0px 7px; border-image: none; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <strong>
+                                <span style="line-height: 150%; font-family: 宋体;">正</span>
+                            </strong>
+                            <strong>
+                                <span style="line-height: 150%;">
+                                    <span style="font-family: Times New Roman;">&nbsp; </span>
+                                </span>
+                            </strong>
+                            <strong>
+                                <span style="line-height: 150%; font-family: 宋体;">选</span>
+                            </strong>
+                        </p>
+                    </td>
+                    <td width="260" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;"
+                        colspan="2">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">全校</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">&nbsp; &nbsp;17</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">周</span>
+                            <span style="line-height: 150%; font-size: 12px;"> </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">星期二、三、四、五</span>
+                        </p>
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">（</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">6</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">月</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">26</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">、</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">27</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">、</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">28</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">、</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">29</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">日）</span>
+                        </p>
+                    </td>
+                    <td width="60" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体;">否</span>
+                        </p>
+                    </td>
+                    <td width="72" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体;">是</span>
+                        </p>
+                    </td>
+                    <td width="60" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体;">是</span>
+                        </p>
+                    </td>
+                    <td width="72" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体;">可选</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr style="height: 59px;">
+                    <td width="71" style="border-width: 0px 1px 1px; border-style: none solid solid; border-color: rgb(0, 0, 0) windowtext windowtext; padding: 0px 7px; border-image: none; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <strong>
+                                <span style="color: red; line-height: 150%; font-family: 宋体;">补退选</span>
+                            </strong>
+                        </p>
+                    </td>
+                    <td width="260" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;"
+                        colspan="2">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">全校</span>
+                            <span style="line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">&nbsp;&nbsp;&nbsp; </span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">新学期第</span>
+                            <span style="color: red; line-height: 150%; font-size: 29px;">
+                                <span style="font-family: Times New Roman;">4</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">周</span>
+                            <span style="line-height: 150%; font-size: 12px;"> </span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">星期二、三、四</span>
+                        </p>
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">（</span>
+                            <span style="color: red; line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">9</span>
+                            </span>
+                            <span style="color: red; line-height: 150%; font-family: 宋体; font-size: 12px;">月</span>
+                            <span style="color: red; line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">25</span>
+                            </span>
+                            <span style="color: red; line-height: 150%; font-family: 宋体; font-size: 12px;">、</span>
+                            <span style="color: red; line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">26</span>
+                            </span>
+                            <span style="color: red; line-height: 150%; font-family: 宋体; font-size: 12px;">、</span>
+                            <span style="color: red; line-height: 150%; font-size: 12px;">
+                                <span style="font-family: Times New Roman;">27</span>
+                            </span>
+                            <span style="color: red; line-height: 150%; font-family: 宋体; font-size: 12px;">日</span>
+                            <span style="line-height: 150%; font-family: 宋体; font-size: 12px;">）</span>
+                        </p>
+                    </td>
+                    <td width="60" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体;">否</span>
+                        </p>
+                    </td>
+                    <td width="72" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体;">是</span>
+                        </p>
+                    </td>
+                    <td width="60" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体;">是</span>
+                        </p>
+                    </td>
+                    <td width="72" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%; font-family: 宋体;">可选</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr style="height: 36px;">
+                    <td width="71" style="border-width: 0px 1px 1px; border-style: none solid solid; border-color: rgb(0, 0, 0) windowtext windowtext; padding: 0px 7px; border-image: none; background-color: transparent;">
+                        <p style="text-align: center; line-height: 150%;">
+                            <strong>
+                                <span style="line-height: 150%; font-family: 宋体;">选课时间</span>
+                            </strong>
+                        </p>
+                    </td>
+                    <td width="524" style="border-width: 0px 1px 1px 0px; border-style: none solid solid none; border-color: rgb(0, 0, 0) windowtext windowtext rgb(0, 0, 0); padding: 0px 7px; background-color: transparent;"
+                        colspan="6">
+                        <p style="text-align: center; line-height: 150%;">
+                            <span style="line-height: 150%;">
+                                <span style="font-family: Times New Roman;">9</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体;">：</span>
+                            <span style="line-height: 150%;">
+                                <span style="font-family: Times New Roman;">30---22</span>
+                            </span>
+                            <span style="line-height: 150%; font-family: 宋体;">：</span>
+                            <span style="line-height: 150%;">
+                                <span style="font-family: Times New Roman;">00</span>
+                            </span>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="footer"></div>
+    <script src="/static/assets/js/jquery-1.11.1.min.js"></script>
+    <script src="/static/assets/js/login.js"></script>
 </body>
+
 </html>

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from Schedule import models
 import requests
 from bs4 import BeautifulSoup
+from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
@@ -25,7 +26,8 @@ def crawler(request):
         }
         response = requests.post(url, headers=headers, data=datas)
         print(response.status_code)
-        soup = BeautifulSoup(response.content.decode('GBK', 'ignore'), 'html.parser')
+        soup = BeautifulSoup(response.content.decode(
+            'GBK', 'ignore'), 'html.parser')
         table = soup.find('table', class_='displayTag')
         trs = table.find_all('tr', class_='odd')
         for tr in trs:
@@ -56,16 +58,13 @@ def crawler(request):
     return render(request, 'crawler.html')
 
 
-def login(request):
-    if request.method == 'POST':
-
-        return render(request, 'login.html')
-    return render(request, 'login.html')
-
-
 def register(request):
     return render(request, 'register.html')
 
 
 def choose(request):
     return render(request, 'choose.html')
+
+
+def index(request):
+    return render(request, 'login.html')
