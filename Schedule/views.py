@@ -2,7 +2,8 @@ from django.shortcuts import render
 from Schedule import models
 import requests
 from bs4 import BeautifulSoup
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.hashers import make_password, check_password
+from django.shortcuts import redirect
 
 
 # Create your views here.
@@ -59,12 +60,61 @@ def crawler(request):
 
 
 def register(request):
-    return render(request, 'register.html')
+    if request.method == 'POST':
+        account = request.POST['account']
+        password = request.POST['password']
+        if models.User.objects.filter(user_name=account):
+            message = '账号已存在'
+            request.session['message'] = message
+            return redirect('/login')
+        else:
+            in_password = make_password(password)
+            models.User.objects.create(user_name=account, user_password=in_password)
+            message = '注册成功'
+            request.session['message'] = message
+            return redirect('/login')
+    return render(request, 'login.html')
 
 
 def choose(request):
     return render(request, 'choose.html')
 
 
-def index(request):
+def login(request):
+    if request.method == 'POST':
+        account = request.POST['account']
+        password = request.POST['password']
+        try:
+            user = models.User.objects.get(user_name=account)
+            bool_password = check_password(password, user.user_password)
+            if bool_password:
+                request.session['account'] = user.user_name
+                return redirect('/index')
+            else:
+                message = '密码错误'
+                return render(request, 'login.html', {'message': message})
+        except:
+            message = '账号不存在'
+            return render(request, 'login.html', {'message': message})
+    if 'message' in request.session:
+        message = request.session['message']
+        del request.session['message']
+        return render(request, 'login.html', {'message': message})
     return render(request, 'login.html')
+
+
+def index(request):
+    if 'account' in request.session:
+        return render(request, 'index.html')
+    return redirect('/login')
+
+
+def init(request):
+    if 'account' in request.session:
+        return redirect('/index')
+    return redirect('/login')
+
+
+def logout(request):
+    del request.session['account']
+    return redirect('/login')

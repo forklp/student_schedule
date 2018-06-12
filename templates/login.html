@@ -9,9 +9,10 @@
 
 <body>
     <div class="header"></div>
+    <h1>{{ message }}</h1>
     <div class="login pos1">
-        {% csrf_token %}
         <form role="form" action="." method="POST" class="login-form">
+            {% csrf_token %}
             <div class="form-group">
                 <label class="sr-only" for="account">账户：</label>
                 <input type="text" name="account" placeholder="账户" class="form-username form-control" id="account">
@@ -24,8 +25,8 @@
         </form>
     </div>
     <div class="register pos1">
-        {% csrf_token %}
-        <form role="form" action="." method="POST" class="login-form">
+        <form role="form" action="/register/" method="POST" class="login-form">
+            {% csrf_token %}
             <div class="form-group">
                 <label class="sr-only" for="account">账户：</label>
                 <input type="text" name="account" placeholder="账户" class="form-username form-control" id="account">
