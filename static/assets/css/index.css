@@ -1,0 +1,90 @@
+*{
+    box-sizing: border-box;
+}
+body,.shd::before{
+    background-image: url(/static/assets/img/bg.png);
+    background-attachment: fixed;
+}
+.shd::before {
+    background-image: url(/static/assets/img/bg.png);
+    z-index: -1;
+    margin:-100px;
+    height:200%;
+    width:200%;
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    -webkit-filter: blur(5px);   
+    -moz-filter: blur(5px);   
+    -ms-filter: blur(5px);   
+    -o-filter: blur(5px);   
+    filter: blur(8px);   
+    filter: progid:DXImageTransform.
+    Microsoft.Blur(PixelRadius=4, MakeShadow=false);  
+}
+
+.curriculum{
+    position: absolute;
+    top:40px;
+    left:150px;
+    width:700px;
+    height:500px;
+    margin-bottom: 100px;
+    padding: 15px 50px;
+    text-align: center;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: -1px -2px 5px black;
+}
+
+.curriculum div{
+    position: absolute;
+    padding:5px;
+    width:70px;
+    box-shadow: 1px 1px 5px rgb(114, 64, 64);
+}
+
+.height0{
+    display:none;
+}
+
+.height1{
+    height:50px;
+}
+
+.height2{
+    height:110px;
+}
+
+.height3{
+    height:170px;
+}
+
+.search{
+    position: absolute;
+    background: inherit;  
+    top:40px;
+    left:900px;
+    width:200px;
+    height:545px;
+    margin-bottom: 100px;
+    padding: 15px 50px;
+    text-align: center;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: 1px -2px 5px black;
+}
+
+.message{
+    position: absolute;
+    top:580px;
+    left:150px;
+    width:950px;
+    height:200px;
+    margin-bottom: 100px;
+    padding: 15px 50px;
+    text-align: center;
+    z-index: 3;
+    overflow: hidden;
+    box-shadow: 1px 2px 5px black;
+}

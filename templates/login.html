@@ -9,41 +9,42 @@
 
 <body>
     <div class="header"></div>
-    <h1>{{ message }}</h1>
-    <div class="login pos1">
+    <div class="notice shd">{{ message }}</div>
+    <div class="close">X</div>
+    <div class="login pos1 shd">
         <form role="form" action="." method="POST" class="login-form">
             {% csrf_token %}
             <div class="form-group">
                 <label class="sr-only" for="account">账户：</label>
-                <input type="text" name="account" placeholder="账户" class="form-username form-control" id="account">
+                <input type="text" name="account" placeholder="账户" class="form-username form-control">
             </div>
             <div class="form-group">
                 <label class="sr-only" for="password">密码：</label>
-                <input type="password" name="password" placeholder="******" class="form-password form-control" id="password">
+                <input type="password" name="password" placeholder="******" class="form-password form-control">
             </div>
             <button type="submit" class="btn">Sign in!</button>
         </form>
     </div>
-    <div class="register pos1">
+    <div class="register pos1 shd">
         <form role="form" action="/register/" method="POST" class="login-form">
             {% csrf_token %}
             <div class="form-group">
                 <label class="sr-only" for="account">账户：</label>
-                <input type="text" name="account" placeholder="账户" class="form-username form-control" id="account">
+                <input type="text" name="account" placeholder="账户" class="form-username form-control">
             </div>
             <div class="form-group">
                 <label class="sr-only" for="password">密码：</label>
-                <input type="password" name="password" placeholder="******" class="form-password form-control" id="password">
+                <input type="password" name="password" placeholder="******" class="form-password form-control">
             </div>
             <button type="submit" class="btn">Sign up!</button>
         </form>
     </div>
-    <div class="selector pos2">
+    <div class="selector pos2 shd">
         <div class="selector_register selector_active selector_son">注册</div>
         <div class="selector_line">—</div>
         <div class="selector_login selector_son">登录</div>
     </div>
-    <div class="message pos3">
+    <div class="message pos3 shd">
         <div class="message_header">
             本次选课计划时间表
         </div>
