@@ -18,6 +18,7 @@ function indexX(h) {
 }
 
 function drop(ev, divdom) {
+    
     ev.preventDefault();
     x = parseInt($(divdom).css("height"));
     y = parseInt($(srcdiv).css("height"));
@@ -59,5 +60,5 @@ $(".curriculum div").each(function (index, e) {
 })
 $(".curriculum div").each(function (index, e) {
     if ($(this).css("height") == "40px")
-        $(this).hide();
+        $(this).hide(); 
 })
