@@ -2,9 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>choose</title>
+    <title>ajax</title>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>这是选课页面，请将信息提交至当前页面</h1>
+<button id="send">发送</button>
+<span id="test">hello</span>
+<script>
+    $("#send").click(function () {
+        {#json数据#}
+        var post_data={
+            "name":"klp",
+        };
+
+        $.ajax({
+            url:"/choose/",
+            type:"POST",
+            {#发送json数据到服务器#}
+            data:post_data,
+
+            {#请求成功回调函数#}
+            success:function (data) {
+                alert("请求成功");
+                $('#test').html(data.result);
+            },
+            {#请求失败回调函数#}
+            error:function () {
+                alert("服务器请求超时,请重试!")
+            }
+
+        });
+    });
+</script>
 </body>
 </html>

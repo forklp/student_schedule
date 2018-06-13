@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from Schedule import models
 import requests
 from bs4 import BeautifulSoup
 from django.contrib.auth.hashers import make_password, check_password
 from django.shortcuts import redirect
+import json
 
 
 # Create your views here.
@@ -77,6 +78,14 @@ def register(request):
 
 
 def choose(request):
+    if request.is_ajax():
+        status = 1
+        result = "succuss"
+        return HttpResponse(
+            json.dumps({
+                "status": status,
+                "result": result,
+            }), content_type='application/json')
     return render(request, 'choose.html')
 
 
