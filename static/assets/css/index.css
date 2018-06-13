@@ -45,7 +45,7 @@ body,.shd::before{
 }
 
 .height0{
-    display:none;
+    height:40px;
 }
 
 .height1{
