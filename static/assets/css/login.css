@@ -5,16 +5,58 @@
 table{border:0;margin:0;border-collapse:collapse;border-spacing:0;}
 table td{padding:0;}
 
-body,.pos1::before,.pos2::before,.pos3::before{
+body,.shd::before{
     background-image: url(/static/assets/img/bg.png);
     background-attachment: fixed;
+}
+
+.notice{
+    position: absolute;
+    top:170px;
+    left:500px;
+    width:300px;
+    height:150px;
+    overflow:hidden;
+    z-index: 3;
+    box-shadow: 2px 2px 7px black;
+    text-align: center;
+    line-height: 150px;
+}
+
+.close{
+    position: absolute;
+    top:180px;
+    left:780px;
+    width:30px;
+    height:30px;
+    float:right;
+    cursor: pointer;
+    z-index: 4;
+}
+
+
+.shd::before {
+    background-image: url(/static/assets/img/bg.png);
+    z-index: -1;
+    margin:-100px;
+    height:200%;
+    width:200%;
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    -webkit-filter: blur(5px);   
+    -moz-filter: blur(5px);   
+    -ms-filter: blur(5px);   
+    -o-filter: blur(5px);   
+    filter: blur(8px);   
+    filter: progid:DXImageTransform.
+    Microsoft.Blur(PixelRadius=4, MakeShadow=false);  
 }
 
 .pos1{
     position: absolute;
     top:40px;
     left:1000px;
-    background: rgba(255, 255, 255, 0.4);
     height:400px;
     width:200px;
     padding-top: 50px;
@@ -53,25 +95,7 @@ body,.pos1::before,.pos2::before,.pos3::before{
     overflow: hidden;
     box-shadow:1px 1px 3px black;
 }
-.pos2::before {
-    background-image: url(/static/assets/img/bg.png);
-    z-index: -1;
-    top:40px;
-    left:50px;
-    margin:-50%;
-    height:200%;
-    width:200%;
-    content: '';
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    -webkit-filter: blur(5px);   
-    -moz-filter: blur(5px);   
-    -ms-filter: blur(5px);   
-    -o-filter: blur(5px);   
-    filter: blur(10px);   
-    filter: progid:DXImageTransform.
-    Microsoft.Blur(PixelRadius=4, MakeShadow=false);  
-}
+
 .pos3{
     position: absolute;
     background: inherit;  
@@ -86,25 +110,7 @@ body,.pos1::before,.pos2::before,.pos3::before{
     box-shadow: -1px 4px 5px black;
 }
 
-.pos3::before {
-    background-image: url(/static/assets/img/bg.png);
-    z-index: -1;
-    top:40px;
-    left:50px;
-    margin:-50%;
-    height:200%;
-    width:200%;
-    content: '';
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    -webkit-filter: blur(5px);   
-    -moz-filter: blur(5px);   
-    -ms-filter: blur(5px);   
-    -o-filter: blur(5px);   
-    filter: blur(10px);   
-    filter: progid:DXImageTransform.
-    Microsoft.Blur(PixelRadius=4, MakeShadow=false);  
-}
+
 
 .message_header{
     font-size: 25px;

@@ -73,7 +73,6 @@ def register(request):
             message = '注册成功'
             request.session['message'] = message
             return redirect('/login')
-    return render(request, 'login.html')
 
 
 def choose(request):
