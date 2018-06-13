@@ -3,12 +3,11 @@ function allowDrop(ev) {
 }
 
 var srcdiv = null;
-
+var index;
 function drag(ev, divdom) {
     srcdiv = divdom;
     ev.dataTransfer.setData("text/html", divdom.innerHTML);
-    var index=$(".curriculum div").index(divdom);
-    alert(index);
+    index=$(".curriculum div").index(divdom);
 }
 
 function drop(ev, divdom) {
