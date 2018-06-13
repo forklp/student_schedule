@@ -80,11 +80,13 @@ def choose(request):
     if request.is_ajax():
         status = 1
         result = "succuss"
-        return HttpResponse(
-            json.dumps({
-                "status": status,
-                "result": result,
-            }), content_type='application/json')
+        test = [{"status": 1}]
+        # return HttpResponse(
+        #     json.dumps({
+        #         "status": status,
+        #         "result": result,
+        #     }), content_type='application/json')
+        return HttpResponse(json.dumps(test), content_type='application/json')
     return render(request, 'choose.html')
 
 
@@ -113,6 +115,34 @@ def login(request):
 
 def index(request):
     if 'account' in request.session:
+        if request.is_ajax():
+            course_number = request.POST['course_number']
+            if models.Schdule.objects.filter(course_number=course_number):
+                schdules = models.Schdule.objects.filter(course_number=course_number)
+                datas = []
+                for schdule in schdules:
+                    academy = schdule.academy
+                    course_number = schdule.course_number
+                    course_name = schdule.course_name
+                    course_list = schdule.course_list
+                    credit_hour = schdule.credit_hour
+                    test_type = schdule.test_type
+                    teacher = schdule.teacher
+                    course_week = schdule.course_week
+                    course_day = schdule.course_day
+                    course_time = schdule.course_time
+                    campus = schdule.campus
+                    teaching_building = schdule.teaching_building
+                    classroom = schdule.classroom
+                    course_capacity = schdule.course_capacity
+                    course_limit = schdule.course_limit
+                    course_start = schdule.course_start
+                    course_end = schdule.course_end
+                    datas.append(locals())
+                return HttpResponse(json.dumps(datas), content_type='application/json')
+            else:
+                message = '该课程不存在'
+                return HttpResponse(message)
         return render(request, 'index.html')
     return redirect('/login')
 

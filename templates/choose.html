@@ -27,7 +27,7 @@
             {#请求成功回调函数#}
             success:function (data) {
                 alert("请求成功");
-                $('#test').html(data.result);
+                $('#test').html(data[0].status);
             },
             {#请求失败回调函数#}
             error:function () {
