@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from Schedule import models
 import requests
 from bs4 import BeautifulSoup
 from django.contrib.auth.hashers import make_password, check_password
 from django.shortcuts import redirect
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 
 # Create your views here.
@@ -69,13 +71,25 @@ def register(request):
             return redirect('/login')
         else:
             in_password = make_password(password)
-            models.User.objects.create(user_name=account, user_password=in_password)
+            models.User.objects.create(
+                user_name=account, user_password=in_password)
             message = '注册成功'
             request.session['message'] = message
             return redirect('/login')
 
 
+@csrf_exempt
 def choose(request):
+    if request.is_ajax():
+        status = 1
+        result = "succuss"
+        test = [{"status": 1}]
+        # return HttpResponse(
+        #     json.dumps({
+        #         "status": status,
+        #         "result": result,
+        #     }), content_type='application/json')
+        return HttpResponse(json.dumps(test), content_type='application/json')
     return render(request, 'choose.html')
 
 
@@ -102,8 +116,41 @@ def login(request):
     return render(request, 'login.html')
 
 
+@csrf_exempt
 def index(request):
     if 'account' in request.session:
+        if request.is_ajax():
+            course_number = request.POST['course_number']
+            if models.Schdule.objects.filter(course_number=course_number):
+                schdules = models.Schdule.objects.filter(
+                    course_number=course_number)
+                datas = []
+                for schdule in schdules:
+                    dt = {
+                        "academy": schdule.academy,
+                        "course_number": schdule.course_number,
+                        "course_name": schdule.course_name,
+                        "course_list": schdule.course_list,
+                        "credit_hour": schdule.credit_hour,
+                        "test_type": schdule.test_type,
+                        "teacher": schdule.teacher,
+                        "course_week": schdule.course_week,
+                        "course_day": schdule.course_day,
+                        "course_time": schdule.course_time,
+                        "campus": schdule.campus,
+                        "teaching_building": schdule.teaching_building,
+                        "classroom": schdule.classroom,
+                        "course_capacity": schdule.course_capacity,
+                        "course_limit": schdule.course_limit,
+                        "course_start": schdule.course_start,
+                        "course_end": schdule.course_end
+                    }
+                    datas.append(dt)
+                print(datas)
+                return HttpResponse(json.dumps(datas), content_type='application/json')
+            else:
+                message = '该课程不存在'
+                return HttpResponse(message)
         return render(request, 'index.html')
     return redirect('/login')
 

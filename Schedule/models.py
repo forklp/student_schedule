@@ -17,7 +17,7 @@ class Schdule(models.Model):
     course_list = models.CharField(max_length=20, null=True)  # 课序号
     credit_hour = models.CharField(max_length=20, null=True)  # 学分
     test_type = models.CharField(max_length=20, null=True)  # 考试类型
-    teacher = models.CharField(max_length=20, null=True)  # 教师
+    teacher = models.CharField(max_length=50, null=True)  # 教师
     course_week = models.CharField(max_length=20, null=True)  # 周次
     course_day = models.CharField(max_length=20, null=True)  # 星期
     course_time = models.CharField(max_length=20, null=True)  # 节次

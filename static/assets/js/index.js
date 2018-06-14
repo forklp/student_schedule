@@ -62,3 +62,31 @@ $(".curriculum div").each(function (index, e) {
     if ($(this).css("height") == "40px")
         $(this).hide(); 
 })
+
+$(".logout").click(function(){
+    $(location).attr("href","/logout/");
+})
+
+$("button").click(function () {
+    var post_data={
+        "course_number":$(":input").val(),
+    };
+
+    $.ajax({
+        url:"/index/",
+        type:"POST",
+        data:post_data,
+
+        success:function (data) {
+            $.each(data,function(name,value){
+                alert(name);
+                alert(value);
+            })
+        },
+        error:function () {
+            alert("服务器请求超时,请重试!")
+        }
+
+    });
+});
+
