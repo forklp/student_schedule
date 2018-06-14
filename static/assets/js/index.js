@@ -10,7 +10,7 @@ function drag(ev, divdom) {
 }
 
 function heightX(x) {
-    return x * 60 - 10;
+    return x * 35 - 5;
 }
 
 function indexX(h) {
@@ -56,10 +56,10 @@ function drop(ev, divdom) {
 
 $(".curriculum div").each(function (index, e) {
     $(this).html(index);
-    $(this).offset({ top: Math.floor(index / 7) * 60 + 50, left: index % 7 * 85 + 200 });
+    $(this).offset({ top: Math.floor(index / 7) * 35 + 50, left: index % 7 * 85 + 200 });
 })
 $(".curriculum div").each(function (index, e) {
-    if ($(this).css("height") == "40px")
+    if ($(this).css("height") == "20px")
         $(this).hide(); 
 })
 
@@ -78,9 +78,14 @@ $("button").click(function () {
         data:post_data,
 
         success:function (data) {
-            $.each(data,function(name,value){
-                alert(name);
-                alert(value);
+            $(".message").html("");
+            var len=data[0].course_end-data[0].course_start;
+            $.each(data,function(index,value){
+                $(".message").append("<div>"+value.course_name+"</div>");
+            })
+            $(".message div").each(function(index,e){
+                $(e).offset({top:550,left:index*85+200})
+                $(e).css("height",heightX(len)+"px");
             })
         },
         error:function () {

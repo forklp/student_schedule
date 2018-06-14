@@ -26,6 +26,7 @@ body,.shd::before{
 .logout{
     cursor: pointer;
     position: absolute;
+    top:20px;
     left:1150px;
     width:100px;
     height:30px;
@@ -42,7 +43,7 @@ body,.shd::before{
 
 .curriculum{
     position: absolute;
-    top:40px;
+    top:20px;
     left:150px;
     width:700px;
     height:500px;
@@ -59,31 +60,40 @@ body,.shd::before{
     padding:5px;
     width:70px;
     box-shadow: 1px 1px 5px rgb(114, 64, 64);
+    font-size:12px;
+}
+
+.message div{
+    position: absolute;
+    padding:5px;
+    width:70px;
+    box-shadow: 1px 1px 5px rgb(114, 64, 64);
+    font-size:12px;
 }
 
 .height0{
-    height:40px;
+    height:20px;
 }
 
 .height1{
-    height:50px;
+    height:30px;
 }
 
 .height2{
-    height:110px;
+    height:65px;
 }
 
 .height3{
-    height:170px;
+    height:100px;
 }
 
 .search{
     position: absolute;
     background: inherit;  
-    top:40px;
+    top:20px;
     left:900px;
     width:200px;
-    height:545px;
+    height:515px;
     line-height: 50px;
     margin-bottom: 100px;
     padding: 15px 30px;
@@ -128,7 +138,7 @@ button:active:focus, button.active:focus { outline: 0;  background: #de615e; col
 
 .message{
     position: absolute;
-    top:580px;
+    top:530px;
     left:150px;
     width:950px;
     height:200px;
