@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from Schedule import models
+from . import models
 import requests
 from bs4 import BeautifulSoup
 from django.contrib.auth.hashers import make_password, check_password
@@ -15,7 +15,7 @@ def crawler(request):
         url = 'http://zhjw.scu.edu.cn/courseSearchAction.do'
         headers = {
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-            'Cookie': 'safedog-flow-item=; _ga=GA1.3.88698885.1525926882; hibext_instdsigdipv2=1; _gid=GA1.3.318244352.1528272496; JSESSIONID=bcd2RNIamcZHl64_hiupw',
+            'Cookie': 'safedog-flow-item=; _ga=GA1.3.88698885.1525926882; hibext_instdsigdipv2=1; JSESSIONID=bdcaX1-PHqz8Rh6doQ9pw; trdipcktrffcext=1; _gid=GA1.3.1720640769.1528969261',
             'Connection': 'keep-alive',
             'Host': 'zhjw.scu.edu.cn',
             'Accept-Language': 'zh-CN,zh;q=0.9',
@@ -38,23 +38,23 @@ def crawler(request):
             time = tds[9].string.split('~')
             class_start = time[0]
             class_end = time[1]
-            models.Schdule.objects.create(academy=tds[0].string,
-                                          course_number=tds[1].string,
-                                          course_name=tds[2].string,
-                                          course_list=tds[3].string,
-                                          credit_hour=tds[4].string,
-                                          test_type=tds[5].string,
-                                          teacher=tds[6].string,
-                                          course_week=tds[7].string,
-                                          course_day=tds[8].string,
-                                          course_time=tds[9].string,
-                                          campus=tds[10].string,
-                                          teaching_building=tds[11].string,
-                                          classroom=tds[12].string,
-                                          course_capacity=tds[13].string,
-                                          course_limit=tds[15].string,
-                                          course_start=class_start,
-                                          course_end=class_end
+            models.Schdule.objects.create(academy=tds[0].string.strip(),
+                                          course_number=tds[1].string.strip(),
+                                          course_name=tds[2].string.strip(),
+                                          course_list=tds[3].string.strip(),
+                                          credit_hour=tds[4].string.strip(),
+                                          test_type=tds[5].string.strip(),
+                                          teacher=tds[6].string.strip(),
+                                          course_week=tds[7].string.strip(),
+                                          course_day=tds[8].string.strip(),
+                                          course_time=tds[9].string.strip(),
+                                          campus=tds[10].string.strip(),
+                                          teaching_building=tds[11].string.strip(),
+                                          classroom=tds[12].string.strip(),
+                                          course_capacity=tds[13].string.strip(),
+                                          course_limit=tds[15].string.strip(),
+                                          course_start=class_start.strip(),
+                                          course_end=class_end.strip()
 
                                           )
 
