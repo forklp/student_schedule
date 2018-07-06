@@ -121,9 +121,9 @@ def index(request):
     if 'account' in request.session:
         if request.is_ajax():
             course_number = request.POST['course_number']
-            if models.Schdule.objects.filter(course_number=course_number):
+            if models.Schdule.objects.filter(course_name=course_number):
                 schdules = models.Schdule.objects.filter(
-                    course_number=course_number)
+                    course_name=course_number)
                 datas = []
                 for schdule in schdules:
                     dt = {
@@ -146,7 +146,6 @@ def index(request):
                         "course_end": schdule.course_end
                     }
                     datas.append(dt)
-                print(datas)
                 return HttpResponse(json.dumps(datas), content_type='application/json')
             else:
                 message = '该课程不存在'

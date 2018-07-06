@@ -1,26 +1,26 @@
 *{
     box-sizing: border-box;
 }
-body,.shd::before{
+body{
     background-image: url(/static/assets/img/bg.png);
     background-attachment: fixed;
 }
 .shd::before {
     background-image: url(/static/assets/img/bg.png);
+    background-attachment: fixed;
     z-index: -1;
     margin:-100px;
     height:200%;
     width:200%;
     content: '';
     position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
+    top:0;
+    left:0;
     -webkit-filter: blur(5px);   
     -moz-filter: blur(5px);   
     -ms-filter: blur(5px);   
     -o-filter: blur(5px);   
-    filter: blur(8px);   
-    filter: progid:DXImageTransform.
-    Microsoft.Blur(PixelRadius=4, MakeShadow=false);  
+    filter: blur(20px);   
 }
 
 .logout{
@@ -42,6 +42,7 @@ body,.shd::before{
 }
 
 .curriculum{
+    -webkit-backface-visibility: hidden;
     position: absolute;
     top:20px;
     left:150px;
@@ -61,6 +62,18 @@ body,.shd::before{
     width:70px;
     box-shadow: 1px 1px 5px rgb(114, 64, 64);
     font-size:12px;
+    transition: width 0.5s,margin-left 0.5s,padding 0.5s;
+}
+
+.theDay{
+    box-shadow: 1px 1px 15px rgb(85, 101, 247) !important;
+}
+
+.hotDay{
+    width:80px !important;
+    margin-left:-5px;
+    padding:5px 10px 5px 10px !important;
+    box-shadow: 1px 1px 15px rgb(170, 82, 0) !important;
 }
 
 .message div{
@@ -88,8 +101,8 @@ body,.shd::before{
 }
 
 .search{
+    -webkit-backface-visibility: hidden;
     position: absolute;
-    background: inherit;  
     top:20px;
     left:900px;
     width:200px;
@@ -100,6 +113,24 @@ body,.shd::before{
     z-index: 1;
     overflow: hidden;
     box-shadow: 1px -2px 5px black;
+}
+
+.trash{
+    padding:0;
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+    top:20px;
+    left:50px;
+    width:70px;
+    height:100px;
+    z-index: 3;
+    overflow: hidden;
+    box-shadow: -1px -2px 5px black;
+}
+
+.trash img{
+    width:70px;
+    height:100px;
 }
 
 input {
@@ -137,6 +168,7 @@ button:focus { outline: 0;  background: #de615e; color: #fff; }
 button:active:focus, button.active:focus { outline: 0;  background: #de615e; color: #fff; }
 
 .message{
+    -webkit-backface-visibility: hidden;
     position: absolute;
     top:530px;
     left:150px;
@@ -148,4 +180,8 @@ button:active:focus, button.active:focus { outline: 0;  background: #de615e; col
     z-index: 3;
     overflow: hidden;
     box-shadow: 1px 2px 5px black;
+}
+
+.message div{
+    transition:width 0.5s,margin-left 0.5s,padding 0.5s;
 }
